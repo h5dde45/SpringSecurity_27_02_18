@@ -23,14 +23,13 @@
 
     <properties>
         <java-version>1.8</java-version>
-        <org.springframework-version>4.3.5.RELEASE
+        <org.springframework-version>4.3.12.RELEASE
         </org.springframework-version>
-        <org.springframework.security-version>4.2.1.RELEASE
+        <org.springframework.security-version>4.2.4.RELEASE
         </org.springframework.security-version>
     </properties>
 
     <dependencies>
-        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -56,6 +55,17 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>${org.springframework.security-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
         </dependency>
         <dependency>
             <groupId>jstl</groupId>
