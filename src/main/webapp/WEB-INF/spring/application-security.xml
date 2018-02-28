@@ -7,15 +7,23 @@
        http://www.springframework.org/schema/security
 	   http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true">
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+    <http use-expressions="true">
+        <intercept-url pattern="/user" access="isAuthenticated()"/>
+        <intercept-url pattern="/admin" access="isAuthenticated()"/>
+        <!--access="hasRole('ROLE_USER')"/>-->
+        <form-login login-page='/login-check'
+                    default-target-url="/user"
+                    authentication-failure-forward-url="/login-check?error=true"
+                    username-parameter="user_login"
+                    password-parameter="password_login"/>
+        <logout logout-success-url="/login-check"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="admin" password="apass" authorities="ROLE_ADMIN,ROLE_USER"/>
-                <user name="user" password="upass" authorities="ROLE_USER"/>
+                <!--<user name="admin" password="apass" authorities="ROLE_ADMIN,ROLE_USER"/>-->
+                <user name="user" password="user" authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
